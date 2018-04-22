@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Title;
+use Auth;
 
 
 class TitleController extends Controller
-{
+{   
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +17,11 @@ class TitleController extends Controller
      */
     public function index()
     {   
+        
+        
         $title = Title::all();
-        return view('admin.pages.title')->with(['titles'=>$title]);
+
+        return view('admin.pages.title')->with(['titles'=>$title,'user'=>Auth::user()]);
     }
 
     /**
@@ -26,10 +31,7 @@ class TitleController extends Controller
      */
     public function create(Request $request)
     {
-        
-        Title::create($request->all());
-
-        return redirect('/title');
+       
     }
 
     /**
@@ -39,8 +41,22 @@ class TitleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $usedtitle='';
+        $title = Title::all()->where('name','=',$request->name);
+        if ($title->all()==null) {
+
+            Title::create($request->all());
+            
+        }
+        else {
+           
+            // Title::create($request->all());
+           $usedtitle = $request->name;
+        }
+        // dd($this->usedtitle);
+       return redirect('/title?usedtitle='.$usedtitle);
+       
     }
 
     /**
@@ -62,7 +78,7 @@ class TitleController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -74,7 +90,13 @@ class TitleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         // dd($request->all());
+         $title=Title::find($id);
+         $title->name = $request->name;
+         $title->sorttitle = $request->sorttitle;
+         $title->save();
+         
+        return redirect('/title');
     }
 
     /**
@@ -84,7 +106,16 @@ class TitleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+
+        // delete with method
+        
+        // 
+        
+        // $title=Title::find($id);
+        // $title->delete();
+        Title::destroy($id);
+         return redirect('/title');
+
     }
 }

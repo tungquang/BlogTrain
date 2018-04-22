@@ -16,11 +16,12 @@ class checkAdmin
      */
     public function handle($request, Closure $next)
     {
+        
+        if(!Auth::check())
+            {
+              return redirect('https://www.youtube.com/watch?v=nHK0u40Ompc');  
+            }
         return $next($request);
-        // if(Auth::check())
-        //     {
-        //         return redirect('/admin');
-        //     }
             
     }
 }

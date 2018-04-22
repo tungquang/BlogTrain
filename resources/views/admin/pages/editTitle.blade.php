@@ -4,9 +4,7 @@
       <div class="container">
             <div class="page-title">
               <div class="title_left">
-                <h3>Form Elements 
-
-                </h3>
+                <h3>Form Elements</h3>
               </div>
 
               <div class="title_right">
@@ -46,38 +44,18 @@
                         <div class="clearfix">
                            <div class="x_content">
                            <br />
-                            <form class="form-horizontal form-label-left input_mask" method="post" action="{{url('title')}}">   
+                            <form class="form-horizontal form-label-left input_mask" method="post" action="{{route('addTitle')}}">   
                              @csrf
                               <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên Tiêu Đề</label>
                                 <div class="col-md-4 col-sm-9 col-xs-12">
-                                  <input type="text" class="form-control" placeholder="Tên tiêu đề
-                                  " name="name" value="<?php 
-                    
-                                        if(isset($_GET['usedtitle']))
-                                        {
-                                          echo $_GET['usedtitle'];
-                                        }
-                                      ?>"   
-                                  >
-                                  <span style="color: red; font-size: 15px;">
-                                    <?php 
-                    
-                                        if(isset($_GET['usedtitle']))
-                                        {
-                                          if(!empty($_GET['usedtitle']))
-                                          {
-                                            echo 'Tiêu đề đã tồn tại !';
-                                          }
-                                        }
-                                      ?>
-                                  </span>
+                                  <input type="text" class="form-control" placeholder="Tên tiêu đề" name="name" value="{{$title->name}}">
                                 </div>
                               </div>
                               <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên Viết Gọn : </label>
                                 <div class="col-md-4 col-sm-9 col-xs-12">
-                                  <input type="text" class="form-control"  placeholder="Ví dụ : lap-trinh-can-ban" name="sorttitle">
+                                  <input type="text" class="form-control" name="sorttitle" value="{{$title->name}}">
                                 </div>
                              
                               </div>
@@ -90,7 +68,6 @@
                               </div>
 
                             </form>
-
                           </div>
                         </div>
                       </div>
@@ -137,7 +114,6 @@
                           <th>Tên Tắt</th>
                           <th>Tạo</th>
                           <th>Cập Nhật</th>
-                          <th>Chức năng</th>
                           
                         </tr>
                       </thead>
@@ -146,30 +122,14 @@
                       <tbody>
                         @foreach($titles as $title)
                           
-                          <tr name="{{$title->sorttitle}}" title="{{$title->sorttitle}}" data-toggle="modal" data-target="#{{$title->sorttitle}}-modal" class="title">
+                          <tr name="{{$title->sorttitle}}" title="{{$title->sorttitle}}">
                             
                             <td>{{$title->name}}</td>
                             <td>{{$title->sorttitle}}</td>
                             <td>{{$title->created_at}}</td>
                             <td>{{$title->updated_at}}</td>
-                            <td><button class="btn btn-danger" onclick="event.preventDefault();
-                                                     document.getElementById('delete-{{$title->name}}').submit();">
-                                Xóa
-                            </button>
-                              <form id="delete-{{$title->name}}" action='{{url("title/$title->id")}}' method="POST">
-                                 @method('DELETE ')
-                                @csrf
-                              </form>
-                            </td>
                           </tr>
-
                         @endforeach
-                        @if($user->role == 1)
-                
-                 
-                  
-                </div>
-                @endif
                       </tbody>
                     </table>
                   </div>
@@ -186,51 +146,4 @@
            
         </div>
       </div>
-     @if($user->role==1)
-        @foreach($titles as $title)
-       <div class="modal fade" id="{{$title->sorttitle}}-modal">
-                  <div class="modal-dialog">
-                    <div class="modal-content">                               
-                          <div class="row">                           
-                                
-                                
-                               
-                                   <div class="x_content">
-                                    
-                                    <br />
-                                    <form class="form-horizontal form-label-left input_mask" method="post" action='{{url("/title/$title->id")}}'> 
-                                     @method('PUT')  
-                                     @csrf
-
-                                      <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên Tiêu Đề</label>
-                                        <div class="col-md-4 col-sm-9 col-xs-12">
-                                          <input type="text" class="form-control" placeholder="Tên tiêu đề" name="name" value="{{$title->name}}">
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên Viết Gọn : </label>
-                                        <div class="col-md-4 col-sm-9 col-xs-12">
-                                          <input type="text" class="form-control"  placeholder="Ví dụ : lap-trinh-can-ban" name="sorttitle" value="{{$title->sorttitle}}">
-                                        </div>
-                                     
-                                      </div>
-                                      <div class="ln_solid"></div>
-                                      <div class="form-group">
-                                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                        
-                                          <button type="submit" class="btn btn-success" >Sửa</button>
-                                        </div>
-                                      </div>
-
-                                    </form>
-
-                                  </div>
-                          </div>                                   
-                        </div>
-
-                    </div>
-                  </div>
-     @endforeach
-     @endif
 @endsection
