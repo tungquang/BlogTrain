@@ -19,7 +19,7 @@ class checkAdmin
         
         if(!Auth::check())
             {
-              return redirect('https://www.youtube.com/watch?v=nHK0u40Ompc');  
+              return redirect('/home');  
             }
         return $next($request);
             

@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Model\Post;
+use App\Model\Title;
 use Auth;
 
-class UserController extends Controller
+class PostController extends Controller
 {   
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
+
+    
+   
     /**
-     * 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $user = Auth::user();
-        return view('admin.chart.chart')->with(['user'=>$user]);
+    {   
+        $posts = Post::all();
+        
+        return view('admin.posts.list')->with(['posts'=>$posts,'user'=>Auth::user()]);
     }
 
     /**
@@ -30,8 +30,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $title = Title::all();
+        return view('admin.posts.post')->with(['titles'=>$title,'user'=>Auth::user()]);
     }
 
     /**
@@ -42,8 +43,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+            Post::create($request->all());
+            return redirect('/post');
+     }
 
     /**
      * Display the specified resource.
@@ -87,6 +89,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+        return redirect('/post');
     }
 }
