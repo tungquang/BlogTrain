@@ -9,8 +9,7 @@ use Auth;
 
 
 class TitleController extends Controller
-{   
-   
+{
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +17,7 @@ class TitleController extends Controller
      */
     public function index()
     {   
-        
-        
         $title = Title::all();
-
         return view('admin.titles.title')->with(['titles'=>$title,'user'=>Auth::user()]);
     }
 
