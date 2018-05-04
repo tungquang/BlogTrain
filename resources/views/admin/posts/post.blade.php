@@ -21,7 +21,7 @@
       </div>
       {{-- Div to add the new post --}}
       <div class="clearfix"> 
-         @if($user->role <=2)
+     
          <div class="row">
             <div class="x_panel">
                <div class="x_title">
@@ -44,6 +44,10 @@
 							<div class="form-group">
 								<label for="name">Tên bài viết :</label>
 								<input type="text" name="name" id="name" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label for="description">Miêu tả : </label>
+								<input type="text" name="description" id="description" class="form-control" required>
 							</div>
 							<input type="hidden" name="user_id" value="{{$user->id}}">
 							<p>
@@ -221,7 +225,7 @@
                </div>
             </div>
          </div>
-         @endif
+         
          {{-- Div to add the new post --}}     
       </div>
    </div>

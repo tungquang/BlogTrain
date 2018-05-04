@@ -21,7 +21,8 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('admin.chart.chart')->with(['user'=>$user]);
+        $users = User::all();
+        return view('admin.users.user')->with(['user'=>$user,'users'=>$users]);
     }
 
     /**
@@ -31,7 +32,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        return view('admin.users.user')->with(['user'=>$user]);
     }
 
     /**
@@ -42,7 +44,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

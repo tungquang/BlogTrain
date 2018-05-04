@@ -38,7 +38,7 @@
                       <li>
                         <a href="{{url('/title/create')}}">Thêm title</a>
                       </li>
-                      <li><a href="form_advanced.html">Thêm users</a></li>
+                      <li><a href="{{url('/user/create')}}">Thêm users</a></li>
                       <li>
                         <a href="{{url('/post/create')}}">Thêm bài viết</a>
                       </li>

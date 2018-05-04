@@ -8,7 +8,7 @@ use App\User;
 
 class Post extends Model
 {
-    protected $fillable = ['content','user_id','id_title','name'];
+    protected $fillable = ['content','user_id','id_title','name','description',];
     protected $table ='posts';
     public function title()
    {

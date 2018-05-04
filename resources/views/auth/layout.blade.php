@@ -42,31 +42,35 @@
 	<div id="small-dialog1" class="mfp-hide">
 		<div class="contact-form1">
 			<div class="contact-w3-agileits">
-				<h3>Register Form</h3>
-				<form action="#" method="post">
+				<h3>Tạo tài khoản</h3>
+				<form action="{{ route('register') }}" method="post">
+					@csrf
 						<div class="form-sub-w3ls">
-							<input placeholder="User Name"  type="text" required="">
+							<input placeholder="Họ và Tên"  type="text" required="" name="name">
 							<div class="icon-agile">
 								<i class="fa fa-user" aria-hidden="true"></i>
 							</div>
 						</div>
 						<div class="form-sub-w3ls">
-							<input placeholder="Email" class="mail" type="email" required="">
+							<input placeholder='quangtungjoin@gmail.com' class="mail" type="email" required="" name="email">
 							<div class="icon-agile">
 								<i class="fa fa-envelope-o" aria-hidden="true"></i>
 							</div>
 						</div>
 						<div class="form-sub-w3ls">
-							<input placeholder="Password"  type="password" required="">
+							<input placeholder="Mật khẩu "  type="password" required="" name="password">
 							<div class="icon-agile">
 								<i class="fa fa-unlock-alt" aria-hidden="true"></i>
 							</div>
 						</div>
 						<div class="form-sub-w3ls">
-							<input placeholder="Confirm Password"  type="password" required="">
+							<input placeholder="Nhập lại mật khẩu"  type="password" required="" name="password_confirmation">
 							<div class="icon-agile">
 								<i class="fa fa-unlock-alt" aria-hidden="true"></i>
 							</div>
+						</div>
+						<div class="form-sub-w3ls">
+							<input placeholder="Số điện thoại"  type="text" required="" name="phone">
 						</div>
 					<div class="login-check">
 						 <label class="checkbox"><input type="checkbox" name="checkbox" checked="">I Accept Terms & Conditions</label>

@@ -10,8 +10,6 @@ use Auth;
 class PostController extends Controller
 {   
 
-    
-   
     /**
      * Display a listing of the resource.
      *
@@ -55,7 +53,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('homes.detail')->with(['post'=>$post]);
     }
 
     /**
@@ -89,6 +88,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        
         Post::destroy($id);
         return redirect('/post');
     }
