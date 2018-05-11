@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Title;
+use App\Model\Post;
 use Auth;
 
 
 class TitleController extends Controller
-{   
-    
+{
     /**
      * Display a listing of the resource.
      *
@@ -17,11 +17,8 @@ class TitleController extends Controller
      */
     public function index()
     {   
-        
-        
         $title = Title::all();
-
-        return view('admin.pages.title')->with(['titles'=>$title,'user'=>Auth::user()]);
+        return view('admin.titles.title')->with(['titles'=>$title,'user'=>Auth::user()]);
     }
 
     /**
@@ -29,9 +26,9 @@ class TitleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-       
+       return view('admin.titles.editTitle')->with(['user'=>Auth::user()]);
     }
 
     /**
