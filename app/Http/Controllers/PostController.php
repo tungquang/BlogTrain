@@ -88,8 +88,17 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        
-        Post::destroy($id);
-        return redirect('/post');
+        $post =  Post::find($id);
+        $flag = (Auth::user()->hasRole('admin')) ? 1 : (Auth::user()->can('delete-post') ? 1 :(($post->user_id ==Auth::user()->id) ? 1 : 0));
+        if($flag)
+        {
+             Post::destroy($id);
+            return redirect('/post');
+        }
+        else
+        {
+            return view('errors.errorRoleDestroy')->with(['user'=>Auth::user()]);
+        }
+       
     }
 }
