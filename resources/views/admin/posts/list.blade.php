@@ -49,11 +49,17 @@
 	                            <td>{{$post->user->name}}</td>
 	                            <td>{{$post->created_at}}</td>
 	                            <td>{{$post->updated_at}}</td>
-	                            <td><button class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete-{{$post->id}}').submit();">Xóa</button>
+	                            <td>
+	                            	@if($post->user->id == $user->id || $user->hasRole('admin')|| $user->can('delete-post'))
+	                            		<button class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete-{{$post->id}}').submit();">Xóa</button>
 	                              <form id="delete-{{$post->id}}" action='{{url("post/$post->id")}}' method="POST">
+	                              	
+
 	                                 @method('DELETE ')
 	                                @csrf
 	                              </form>
+	                              
+	                              @endif
 	                            </td>
 	                          </tr>
 

@@ -12,7 +12,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Cá nhân</a></li>
+                    <li><a href="{{url("user/".$user->id)}}"> Cá nhân</a></li>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right"></span>

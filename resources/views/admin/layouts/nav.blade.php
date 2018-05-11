@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{route('home')}}" class="site_title"><i class="fa fa-paw"></i> <span>Admin Blog Train </span></a>
+              <a href="{{route('home')}}" class="site_title"><i class="fa fa-paw"></i> <span>{{config('app.name')}} </span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -28,16 +28,24 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Trang Chủ <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      
                       <li><a href="{{url('/title')}}">Title</a></li>
                       <li><a href="{{url('/user')}}">Users</a></li>
                       <li><a href="{{url('/post')}}">Posts</a></li>
                     </ul>
                   </li>
+
+                @if($user->hasRole('admin'))
+                  <li><a href="{{url('/role')}}">Role<span class="fa fa-chevron-down"></span></a></li>
+                  <li><a href="{{url('/permission')}}">Permission<span class="fa fa-chevron-down"></span></a></li>
+                @endif
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li>
-                        <a href="{{url('/title/create')}}">Thêm title</a>
-                      </li>
+                      @if($user->can('create-post'))
+                         <li>
+                            <a href="{{url('/title/create')}}">Thêm title</a>
+                         </li>
+                      @endif
                       <li><a href="{{url('/user/create')}}">Thêm users</a></li>
                       <li>
                         <a href="{{url('/post/create')}}">Thêm bài viết</a>
@@ -45,40 +53,8 @@
                       
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
-                      <li><a href="echarts.html">ECharts</a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
-                  </li>
+                 
+                
                 </ul>
               </div>
               

@@ -7,24 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
-
-    <title> Blog </title>
+    <title> {{config('app.name')}} </title>
 
     <!-- Bootstrap -->
-    <link href="{{asset('vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <!-- Font Awesome -->
-    <link href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/font-awesome/font-awesome.min.css')}}" rel="stylesheet" type="text/css"> 
+
     
-    <!-- bootstrap-progressbar -->
-    <!-- JQVMap -->
-    
-    <!-- bootstrap-daterangepicker -->
-  
-    
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap/bootstrap-progressbar-3.3.4.min.css')}}">
     <!-- Custom Theme Style -->
-    <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
-    <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
-    <script src="{{asset('js/ckeditor.js')}}"></script>
+    <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet" type="text/css">
+        <!-- jQuery -->
+      {{-- ckeditor --}}
+    <script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
+   
     
   </head>
 
@@ -47,20 +44,17 @@
       </div>
     </div>
 
-    <!-- jQuery -->
 
-    
-    <!-- Bootstrap -->
-    <script src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <!-- FastClick -->
-    <script src="{{asset('vendors/fastclick/lib/fastclick.js')}}"></script>
     <!-- NProgress -->
-
-    <script src="{{asset('vendors/moment/min/moment.min.js')}}"></script>
-  
+    <script src="{{asset('js/jquery/jquery.min.js')}}"></script>
+        {{-- bootstrap --}}
+    <script src="{{asset('js/bootstrap/bootstrap.min.js')}}"></script>
+    
+    <script src="{{asset('js/bootstrap/bootstrap-progressbar.min.js')}}"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.min.js')}}"></script>
+    
     
   </body>
 </html>
